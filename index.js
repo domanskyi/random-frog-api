@@ -20,7 +20,7 @@ app.get("/", (req, res) => {
   axios
     .get("https://api.unsplash.com/photos/random", {
       params: {
-        query: "frog",
+        collections: "21973979",
         client_id: UNSPLASH_ACCESS_KEY,
       },
     })
@@ -28,7 +28,6 @@ app.get("/", (req, res) => {
       res.send(data.urls.full);
     })
     .catch((err) => {
-      console.log(err.message);
       res.status(500).send("Some error occured");
     });
 });
