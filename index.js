@@ -1,12 +1,12 @@
 require("dotenv").config();
 
-const axios = require("axios");
-
 const express = require("express");
 const cors = require("cors");
-const app = express();
+const { getRandomImage } = require("./unsplash");
 
 UNSPLASH_ACCESS_KEY = process.env.UNSPLASH_ACCESS_KEY;
+
+const app = express();
 
 app.use(cors());
 
@@ -17,19 +17,12 @@ app.get("/", (req, res) => {
     );
   }
 
-  axios
-    .get("https://api.unsplash.com/photos/random", {
-      params: {
-        collections: "21973979",
-        client_id: UNSPLASH_ACCESS_KEY,
-      },
-    })
-    .then(({ data }) => {
-      res.send(data.urls.full);
-    })
-    .catch((err) => {
-      res.status(500).send("Some error occured");
-    });
+  getRandomImage({
+    collections: "21973979",
+    client_id: UNSPLASH_ACCESS_KEY,
+  })
+    .then((data) => res.send(data.urls.full))
+    .catch((_) => res.status(500).send("Some error occured"));
 });
 
 app.listen(8080, () => {
