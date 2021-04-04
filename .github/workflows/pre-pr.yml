@@ -18,9 +18,9 @@ jobs:
         run: npm ci
 
       - name: Tests
-        uses: ziishaned/jest-reporter-action@v0.0.1
+        uses: artiomtr/jest-coverage-report-action@v1.0
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          test-command: 'npm test --coverage'
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          #   threshold: 80 # optional parameter
       # - name: Run tests
       #   run: npm run test
