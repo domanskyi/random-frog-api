@@ -1,16 +1,26 @@
-name: 'coverage'
-on:
-  pull_request:
-    branches:
-      - master
+name: Pre PR
+
+on: [push]
+
 jobs:
-  coverage:
+  pre-pull-request:
     runs-on: ubuntu-latest
-    env:
-      CI_JOB_NUMBER: 1
+
     steps:
-      - uses: actions/checkout@v1
-      - uses: artiomtr/jest-coverage-report-action@v1.0
+      - uses: actions/checkout@v2
+
+      - name: Use Node.js 14.15.1
+        uses: actions/setup-node@v1
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          #   threshold: 80 # optional parameter
+          node-version: 14.15.1
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Tests
+        uses: mattallty/jest-github-action@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          # this is just an example, this could be any command that will trigger jest
+          test-command: 'npm test'
