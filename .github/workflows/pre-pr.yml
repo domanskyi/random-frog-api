@@ -1,4 +1,4 @@
-name: CI
+name: Pre PR
 
 on: [push]
 
@@ -8,6 +8,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+
       - name: Use Node.js 14.15.1
         uses: actions/setup-node@v1
         with:
@@ -16,5 +17,9 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Run tests
-        run: npm run test
+      - name: Tests
+        uses: mattallty/jest-github-action@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # - name: Run tests
+      #   run: npm run test
