@@ -17,10 +17,8 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Tests
-        uses: mattallty/jest-github-action@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          # this is just an example, this could be any command that will trigger jest
-          test-command: 'npm test'
+      - name: Run tests
+        run: npm test
+
+      - name: Check linting
+        run: npm run check-linting

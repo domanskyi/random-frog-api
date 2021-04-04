@@ -5,7 +5,10 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "test": "jest"
+    "test": "jest",
+    "prettier-check": "prettier --check ./**/*.js*",
+    "eslint-check": "eslint --max-warnings=0 ./",
+    "check-linting": "npm run prettier-check && npm run eslint-check"
   },
   "repository": {
     "type": "git",

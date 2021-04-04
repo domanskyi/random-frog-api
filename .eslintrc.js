@@ -6,4 +6,7 @@ module.exports = {
     es6: true,
   },
   extends: ['plugin:jest/recommended', 'prettier'],
+  rules: {
+    'jest/no-done-callback': 'off',
+  },
 }
