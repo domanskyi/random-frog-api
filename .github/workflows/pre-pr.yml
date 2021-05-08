@@ -1,6 +1,6 @@
 name: Pre PR
 
-on: [push]
+on: pull_request
 
 jobs:
   pre-pull-request:
@@ -17,8 +17,8 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Run tests
-        run: npm test
-
       - name: Check linting
         run: npm run check-linting
+
+      - name: Run tests
+        run: npm test

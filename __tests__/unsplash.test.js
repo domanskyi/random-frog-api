@@ -16,6 +16,8 @@ describe('test unsplash.js', () => {
 
       axios.get.mockImplementationOnce(() => Promise.resolve(response))
 
+      throw Error('Fail tests')
+
       getRandomImage({}).then((data) => {
         expect(data).toEqual(response)
         cb()
