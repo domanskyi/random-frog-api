@@ -18,6 +18,6 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          tags: domanskyi/random-frog-api:${GITHUB_SHA::8}
+          tags: domanskyi/random-frog-api:${GITHUB_SHA::7}
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
