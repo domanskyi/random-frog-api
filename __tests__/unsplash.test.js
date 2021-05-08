@@ -30,6 +30,7 @@ describe('test unsplash.js', () => {
           throw Error('Ooops, you should not be there')
         })
         .catch((err) => {
+          // eslint-disable-next-line jest/no-conditional-expect
           expect(err).toEqual('Some error')
           cb()
         })

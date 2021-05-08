@@ -1,5 +1,3 @@
-require('dotenv').config()
-
 const express = require('express')
 const cors = require('cors')
 const { getRandomImage } = require('./unsplash')
@@ -9,6 +7,8 @@ UNSPLASH_ACCESS_KEY = process.env.UNSPLASH_ACCESS_KEY
 const app = express()
 
 app.use(cors())
+
+console.log(UNSPLASH_ACCESS_KEY)
 
 app.get('/', (req, res) => {
   if (!UNSPLASH_ACCESS_KEY) {
