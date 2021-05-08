@@ -18,6 +18,6 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          tags: docker/domanskyi/random-frog-api:latest
+          tags: domanskyi/random-frog-api:latest
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
