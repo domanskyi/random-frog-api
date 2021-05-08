@@ -8,8 +8,6 @@ const app = express()
 
 app.use(cors())
 
-console.log(UNSPLASH_ACCESS_KEY)
-
 app.get('/', (req, res) => {
   if (!UNSPLASH_ACCESS_KEY) {
     return res.send(
