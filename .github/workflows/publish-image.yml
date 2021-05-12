@@ -8,6 +8,18 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - uses: actions/checkout@v2
+
+      - name: Docker meta
+        id: meta
+        uses: docker/metadata-action@v3
+        with:
+          images: ${{ secrets.DOCKERHUB_USERNAME }}/random-frog-api
+          tags: |
+            type=ref,event=branch
+            type=ref,event=tag
+            type=ref,event=pr
+
       # https://github.com/docker/setup-qemu-action - emulator and virtualizer that can perform hardware virtualization
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v1
