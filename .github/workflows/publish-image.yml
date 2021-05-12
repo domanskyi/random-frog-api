@@ -7,6 +7,7 @@ jobs:
   docker:
     runs-on: ubuntu-latest
 
+    steps:
       # https://github.com/docker/setup-qemu-action - emulator and virtualizer that can perform hardware virtualization
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v1
