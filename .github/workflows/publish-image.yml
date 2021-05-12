@@ -20,6 +20,7 @@ jobs:
             type=ref,event=branch
             type=ref,event=tag
             type=ref,event=pr
+            type=sha
 
       # https://github.com/docker/setup-qemu-action - emulator and virtualizer that can perform hardware virtualization
       - name: Set up QEMU
