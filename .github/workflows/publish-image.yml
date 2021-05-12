@@ -1,7 +1,10 @@
 name: Publish Docker image
 
-# TODO: change to push to master
-on: [push]
+# Run action when code pushed to master
+on:
+  push:
+    branches:
+      - 'master'
 
 jobs:
   # https://github.com/marketplace/actions/build-and-push-docker-images
