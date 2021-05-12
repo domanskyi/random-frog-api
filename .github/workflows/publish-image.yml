@@ -10,6 +10,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      # https://github.com/docker/metadata-action - generate Docker meta
       - name: Docker meta
         id: meta
         uses: docker/metadata-action@v3
@@ -40,7 +41,8 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/random-frog-api:latest
+          tags: ${{ steps.meta.outputs.tags }}
+          # tags: ${{ secrets.DOCKERHUB_USERNAME }}/random-frog-api:latest
 
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
