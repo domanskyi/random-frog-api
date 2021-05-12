@@ -33,4 +33,4 @@ docker run --name random-frog-api -e UNSPLASH_ACCESS_KEY=your_unsplash_access_ke
 ```
 
 ## Docker Hub
-You can also find [current version of the API image](https://hub.docker.com/repository/docker/domanskyi/random-frog-api) on the Docker Hub
+You can also find current version of the API image on the [Docker Hub](https://hub.docker.com/repository/docker/domanskyi/random-frog-api)
