@@ -1,5 +1,6 @@
 name: Publish Docker image
 
+# TODO: change to push to master
 on: [push]
 
 jobs:
@@ -14,15 +15,11 @@ jobs:
       - name: Docker meta
         id: meta
         uses: docker/metadata-action@v3
-        # TODO: regenerate `latest` on push to master branch
         with:
           images: ${{ secrets.DOCKERHUB_USERNAME }}/random-frog-api
           flavor: |
             latest=true
           tags: |
-            type=ref,event=branch
-            type=ref,event=tag
-            type=ref,event=pr
             type=sha,prefix={{branch}}-
 
       # https://github.com/docker/setup-qemu-action - emulator and virtualizer that can perform hardware virtualization
@@ -46,7 +43,6 @@ jobs:
         with:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
-          # tags: ${{ secrets.DOCKERHUB_USERNAME }}/random-frog-api:latest
 
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
